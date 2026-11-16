@@ -1,0 +1,7 @@
+{
+  "mcpServers": {
+    "todoforai": {
+      "serverUrl": "https://api.todofor.ai/mcp"
+    }
+  }
+}
