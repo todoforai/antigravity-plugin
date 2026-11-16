@@ -45,8 +45,8 @@ If you don't have one, the sign-in page creates it.
 ## Uninstall and revoke
 
 - `agy plugin uninstall todoforai` removes the plugin from Antigravity.
-- Access tokens expire after one hour. Refresh tokens rotate on every use, and reusing an old
-  one revokes the whole chain. The server supports RFC 7009 revocation at
+- Access tokens expire after one hour. Refresh tokens rotate on every use, and an old one is
+  rejected. The server supports RFC 7009 revocation at
   `https://api.todofor.ai/api/auth/oauth2/revoke`.
 - To cut access for every client right away, email support@todofor.ai.
 
