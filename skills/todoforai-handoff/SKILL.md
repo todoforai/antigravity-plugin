@@ -3,7 +3,7 @@ name: todoforai-handoff
 description: >-
   Hand off non-coding follow-through work to a persistent TODO for AI agent:
   launch announcements, beta-user emails, social posts, outreach, form filling,
-  Stripe/analytics checks, or anything that must run later or on a schedule.
+  Stripe/analytics checks, or work that must run later or on a schedule.
   Use only when the user explicitly asks to delegate, hand off, or schedule
   such work to TODO for AI.
 ---
@@ -17,16 +17,18 @@ hand off coding work you can do in this workspace.
    - **Outcome**: what "done" looks like.
    - **Destinations**: where anything gets sent or published (email list, X account, form URL).
      Default to drafts. Ask before choosing send/publish.
-   - **When**: now, or a time. For later or repeating work, put the time in the prompt
-     ("tomorrow 09:00 Europe/Budapest, then report").
+   - **When**: now, or a specific time. Resolve relative times ("tomorrow morning") to an absolute
+     date, time and timezone, and confirm the timezone with the user.
    - **Cost**: runs use the user's TODO for AI credit, not Antigravity quota.
 2. Build the prompt for `run_todo`. It must stand alone, because the TODO agent cannot see
    this workspace. Include only what the task needs: release notes, product name, links,
-   audience, tone. Never include secrets, `.env` contents, tokens, or whole files.
+   audience, tone. Do not include secrets, `.env` contents, tokens, or whole files.
 3. Call `run_todo` with the prompt. Pass `project_id` / `agent_id` only if the user named one
    (`list_projects`, `list_agents`).
-4. Reply immediately with the TODO URL. Say that approvals and sign-ins happen there, and that the
-   user can ask you later to check it (skill `todoforai-check`).
+4. Reply with the TODO URL and its `todo_id` / `project_id` (needed by `todoforai-check`).
+   Approvals and sign-ins happen at that URL. For scheduled work, say the schedule is
+   pending until the TODO confirms it. `run_todo` starts the TODO immediately; the TODO agent
+   sets up the schedule itself.
 
 ## Prompt template
 ```
@@ -34,6 +36,8 @@ Goal: <outcome>
 Context: <product, release notes, links, audience>
 Deliverables: <drafts / sent items / report>
 Constraints: draft only unless I approve in this TODO; <tone, language, limits>
-When: <now | time + timezone | schedule>
+When: now
+  | or: do not do the work now. Create a durable schedule for <YYYY-MM-DD HH:MM timezone>
+    (or <recurrence>), then reply with the exact schedule you created.
 Report back: summary of what was done, with links.
 ```

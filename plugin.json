@@ -3,16 +3,27 @@
   "name": "todoforai",
   "displayName": "TODO for AI",
   "version": "0.1.0",
-  "description": "Hand off launch, outreach and follow-up work from your IDE to persistent TODO for AI agents that report back when done.",
+  "description": "Hand off launch posts, emails, outreach and scheduled checks to TODO for AI agents, then review progress and results from Antigravity.",
   "logo": "assets/logo.png",
-  "author": { "name": "TODO for AI Kft.", "email": "support@todofor.ai", "url": "https://todofor.ai" },
+  "author": {
+    "name": "TODO for AI Kft.",
+    "email": "support@todofor.ai",
+    "url": "https://todofor.ai"
+  },
   "homepage": "https://todofor.ai",
   "repository": "https://github.com/todoforai/antigravity-plugin",
   "license": "MIT",
-  "keywords": ["todo", "delegation", "launch", "outreach", "automation", "agents"],
+  "keywords": [
+    "todo",
+    "delegation",
+    "launch",
+    "outreach",
+    "automation",
+    "agents"
+  ],
   "suggestedPrompts": [
     "Hand off the launch: draft an announcement, a beta-user email and an X post from this release",
-    "Tomorrow at 9:00, check how the launch went and report back",
+    "Hand off a check of how the launch went, scheduled for tomorrow 09:00 my time",
     "What is the status of my TODO for AI handoffs?"
   ]
 }
