@@ -19,7 +19,7 @@ hand off coding work you can do in this workspace.
      Default to drafts. Ask before choosing send/publish.
    - **When**: now, or a specific time. Resolve relative times ("tomorrow morning") to an absolute
      date, time and timezone, and confirm the timezone with the user.
-   - **Cost**: runs use the user's TODO for AI credit, not Antigravity quota.
+   - **Cost**: the TODO runs on the user's TODO for AI credit (this assistant's own usage still applies).
 2. Build the prompt for `run_todo`. It must stand alone, because the TODO agent cannot see
    this workspace. Include only what the task needs: release notes, product name, links,
    audience, tone. Do not include secrets, `.env` contents, tokens, or whole files.
@@ -38,6 +38,6 @@ Deliverables: <drafts / sent items / report>
 Constraints: draft only unless I approve in this TODO; <tone, language, limits>
 When: now
   | or: do not do the work now. Create a durable schedule for <YYYY-MM-DD HH:MM timezone>
-    (or <recurrence>), then reply with the exact schedule you created.
+    (or <recurrence>), then reply with the scheduled TODO's id, URL, time and timezone.
 Report back: summary of what was done, with links.
 ```
