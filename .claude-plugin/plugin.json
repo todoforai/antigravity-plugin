@@ -1,0 +1,27 @@
+{
+  "name": "todoforai",
+  "version": "0.1.0",
+  "description": "Hand off launch posts, emails, outreach and scheduled checks to TODO for AI agents, then review progress and results from your coding agent.",
+  "author": {
+    "name": "TODO for AI Kft.",
+    "email": "support@todofor.ai",
+    "url": "https://todofor.ai"
+  },
+  "homepage": "https://todofor.ai",
+  "repository": "https://github.com/todoforai/antigravity-plugin",
+  "license": "MIT",
+  "keywords": [
+    "todo",
+    "delegation",
+    "launch",
+    "outreach",
+    "automation",
+    "agents"
+  ],
+  "mcpServers": {
+    "todoforai": {
+      "type": "http",
+      "url": "https://api.todofor.ai/mcp"
+    }
+  }
+}

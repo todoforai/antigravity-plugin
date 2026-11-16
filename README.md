@@ -1,6 +1,6 @@
-# TODO for AI for Antigravity
+# TODO for AI plugin for Antigravity and Claude Code
 
-Ship the code in Antigravity. Hand off the follow-through to [TODO for AI](https://todofor.ai).
+Ship the code in Antigravity or Claude Code. Hand off the follow-through to [TODO for AI](https://todofor.ai).
 
 TODO for AI agents do the work that comes after the code: launch announcements,
 emails to beta users, social posts, outreach, form filling, Stripe and analytics checks.
@@ -10,11 +10,22 @@ or ask Antigravity to check.
 
 ## Install
 
+Antigravity:
+
 ```sh
 agy plugin install https://github.com/todoforai/antigravity-plugin
 ```
 
-Then open `/plugin`, expand **todoforai**, and choose **Sign in**. You need a TODO for AI account.
+Then open `/plugin`, expand **todoforai**, and choose **Sign in**.
+
+Claude Code:
+
+```sh
+claude plugin marketplace add todoforai/antigravity-plugin
+claude plugin install todoforai@todoforai
+```
+
+Then run `/mcp` and authenticate **todoforai**. You need a TODO for AI account.
 If you don't have one, the sign-in page creates it.
 
 ## Use

@@ -1,0 +1,15 @@
+{
+  "name": "todoforai",
+  "owner": {
+    "name": "TODO for AI Kft.",
+    "email": "support@todofor.ai"
+  },
+  "plugins": [
+    {
+      "name": "todoforai",
+      "source": "./",
+      "description": "Hand off non-code follow-through to TODO for AI agents."
+    }
+  ],
+  "description": "TODO for AI plugins for coding agents."
+}
