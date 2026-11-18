@@ -8,7 +8,7 @@
     {
       "name": "todoforai",
       "source": "./",
-      "description": "Hand off non-code follow-through to TODO for AI agents."
+      "description": "Experimental: hand off launch emails, posts and scheduled checks to TODO for AI from Claude Code."
     }
   ],
   "description": "TODO for AI plugins for coding agents."

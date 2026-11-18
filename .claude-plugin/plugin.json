@@ -1,7 +1,7 @@
 {
   "name": "todoforai",
   "version": "0.1.0",
-  "description": "Hand off launch posts, emails, outreach and scheduled checks to TODO for AI agents, then review progress and results from your coding agent.",
+  "description": "Experimental: hand off launch emails, posts and scheduled checks to TODO for AI from Claude Code.",
   "author": {
     "name": "TODO for AI Kft.",
     "email": "support@todofor.ai",

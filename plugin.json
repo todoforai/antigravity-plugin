@@ -3,7 +3,7 @@
   "name": "todoforai",
   "displayName": "TODO for AI",
   "version": "0.1.0",
-  "description": "Hand off launch posts, emails, outreach and scheduled checks to TODO for AI agents, then review progress and results from Antigravity.",
+  "description": "Hand off launch emails, posts and scheduled checks to TODO for AI, and check the results from Antigravity.",
   "logo": "assets/logo.png",
   "author": {
     "name": "TODO for AI Kft.",
@@ -22,8 +22,8 @@
     "agents"
   ],
   "suggestedPrompts": [
-    "Hand off the launch: draft an announcement, a beta-user email and an X post from this release",
-    "Hand off a check of how the launch went, scheduled for tomorrow 09:00 my time",
-    "What is the status of my TODO for AI handoffs?"
+    "Hand off a draft email to our beta users about this release. Don't send it.",
+    "Have TODO for AI check signup numbers tomorrow at 9 am my time.",
+    "Which of my handoffs need a reply?"
   ]
 }

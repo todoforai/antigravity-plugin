@@ -1,77 +1,51 @@
-# TODO for AI plugin for Antigravity
+# TODO for AI for Antigravity
 
-Ship the code in Antigravity. Hand off the follow-through to [TODO for AI](https://todofor.ai).
+Ship the release in Antigravity, then hand off what comes after: the launch email, the X post,
+tomorrow's signup check. Each handoff runs on [TODO for AI](https://todofor.ai), so you can close
+Antigravity and check it later at its link.
 
-TODO for AI agents do the work that comes after the code: launch announcements,
-emails to beta users, social posts, outreach, form filling, Stripe and analytics checks.
-Each handoff becomes a persistent TODO that runs on TODO for AI, independently of the IDE
-(subject to the devices, connections, credit and approvals it needs). View results at its link,
-or ask your coding agent to check.
-
-## Install
-
-Antigravity:
+## Install and sign in
 
 ```sh
 agy plugin install https://github.com/todoforai/antigravity-plugin
 ```
 
-Then open `/plugin`, expand **todoforai**, and choose **Sign in**.
+In Antigravity, open `/plugin` → **todoforai** → **Sign in**. Open the URL it prints, sign in or
+create an account on todofor.ai, and approve access. Paste the code from Google's page back into
+the CLI. You should see `signed in to api.todofor.ai`.
 
-Claude Code (experimental, runtime not verified yet):
+The first time the assistant uses each TODO for AI tool, Antigravity asks you to allow it.
+
+## Try it
+
+- "Hand off a draft email to our beta users about this release. Don't send it."
+- "Have TODO for AI check signup numbers tomorrow at 9 am my time."
+- "Which of my handoffs need a reply?"
+
+Or call the skills directly: `/todoforai-handoff`, `/todoforai-check`.
+
+Before a handoff starts, the assistant shows you the prompt it will send and waits for your OK.
+Check it for secrets: the assistant is told to leave them out, but nothing filters them automatically.
+
+The TODO runs with your saved agent permissions, connected services and
+[TODO for AI credit](https://todofor.ai/pricing). If it needs an approval or a sign-in, you do that
+at the TODO's link. The plugin can't approve anything for you. For scheduled work, the first TODO
+creates a second one, and that one's link has the result.
+
+## Claude Code (experimental)
+
+We haven't verified yet that Claude Code connects to TODO for AI.
 
 ```sh
 claude plugin marketplace add todoforai/antigravity-plugin
 claude plugin install todoforai@todoforai
 ```
 
-Then run `/mcp` and authenticate **todoforai**. You need a TODO for AI account.
-If you don't have one, the sign-in page creates it.
+Then authenticate **todoforai** in `/mcp`.
 
-## Use
+## Disconnect
 
-- *"Hand off the launch: draft an announcement, a beta-user email and an X post from this release."*
-- *"Hand off a check of how the launch went, scheduled for tomorrow 09:00 my time."*
-- *"What is the status of my TODO for AI handoffs?"*
+`/plugin` → **todoforai** → **Sign out** signs out locally. `agy plugin uninstall todoforai` removes
+the plugin. To have access revoked on our side too, email support@todofor.ai.
 
-Antigravity: `/todoforai-handoff`, `/todoforai-check`. Claude Code: `/todoforai:todoforai-handoff`,
-`/todoforai:todoforai-check`. Both also trigger from plain requests like the ones above.
-
-| Skill | What it does |
-| --- | --- |
-| `todoforai-handoff` | Confirms the outcome, destinations, timing and cost with you, then starts a TODO with only the context it needs |
-| `todoforai-check` | Shows status and results, and tells you what a TODO is waiting for |
-
-## What it can and can't do
-
-- The skills tell the assistant to start a TODO only when you ask, to confirm the plan first,
-  and to send only the context the task needs, never secrets or whole files. These are
-  instructions to the model, not a technical filter: review the plan before you confirm.
-- What you hand off leaves the IDE and goes to TODO for AI. TODO results come back into the IDE
-  when you check them.
-- The TODO runs with your saved TODO for AI agent permissions and connected services.
-  Sending, publishing, approvals and sign-ins happen in the TODO, at its link. The plugin
-  cannot approve anything or change agent permissions.
-- TODOs run on your TODO for AI credit. Your coding agent's own usage still applies. See [pricing](https://todofor.ai/pricing).
-- Six MCP tools: `run_todo`, `send_message`, `get_todo`, `list_todos`, `list_projects`,
-  `list_agents`. None of them returns stored connector credentials.
-
-## Uninstall and revoke
-
-- Uninstall: `agy plugin uninstall todoforai`, or `claude plugin uninstall todoforai@todoforai`.
-  Uninstalling removes the plugin locally. It does not revoke the grant on the server.
-- Access tokens expire after one hour. Refresh tokens rotate on every use, and an old one is
-  rejected. Clients can revoke tokens (RFC 7009) at `https://api.todofor.ai/api/auth/oauth2/revoke`.
-- To have every grant revoked on the server, contact support@todofor.ai.
-
-## Tested
-
-- Antigravity CLI 1.5.9: skills load, the handoff asks before starting, TODOs complete,
-  status checks work, and scheduled handoffs run at the requested time.
-- OAuth against production: dynamic registration with the Antigravity callback, consent,
-  code exchange, refresh rotation and revocation.
-- Claude Code: manifests validate. The runtime MCP connection is not verified yet.
-
-## Privacy
-
-[Privacy policy](https://todofor.ai/legal/privacy-policy) · [Terms](https://todofor.ai/legal/terms-of-service) · support@todofor.ai
+[Privacy](https://todofor.ai/legal/privacy-policy) · [Terms](https://todofor.ai/legal/terms-of-service)

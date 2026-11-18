@@ -1,43 +1,41 @@
 ---
 name: todoforai-handoff
 description: >-
-  Hand off non-coding follow-through work to a persistent TODO for AI agent:
-  launch announcements, beta-user emails, social posts, outreach, form filling,
-  Stripe/analytics checks, or work that must run later or on a schedule.
-  Use only when the user explicitly asks to delegate, hand off, or schedule
-  such work to TODO for AI.
+  Hand off work that comes after the code to a TODO for AI agent: launch
+  announcements, emails to users, social posts, outreach, form filling,
+  Stripe or analytics checks, or anything that should run later or on a
+  schedule. Use only when the user asks to hand off, delegate or schedule
+  work with TODO for AI.
 ---
 
-## When to use
-The user asked for it. Never start a TODO on your own initiative, and never
-hand off coding work you can do in this workspace.
+Start a TODO only when the user asks for one. Coding work in this workspace stays with you.
 
 ## Steps
-1. Restate the handoff in one short block and get the user's OK before calling any tool:
-   - **Outcome**: what "done" looks like.
-   - **Destinations**: where anything gets sent or published (email list, X account, form URL).
-     Default to drafts. Ask before choosing send/publish.
-   - **When**: now, or a specific time. Resolve relative times ("tomorrow morning") to an absolute
-     date, time and timezone, and confirm the timezone with the user.
-   - **Cost**: the TODO runs on the user's TODO for AI credit (this assistant's own usage still applies).
-2. Build the prompt for `run_todo`. It must stand alone, because the TODO agent cannot see
-   this workspace. Include only what the task needs: release notes, product name, links,
-   audience, tone. Do not include secrets, `.env` contents, tokens, or whole files.
-3. Call `run_todo` with the prompt. Pass `project_id` / `agent_id` only if the user named one
+
+1. Settle the timing: now, or an exact date, time and timezone. Turn "tomorrow morning" into a
+   real time, and ask about the timezone if it isn't clear.
+2. Write the prompt for `run_todo` (template below). The TODO agent can't see this workspace,
+   so the prompt has to stand on its own. Put in only what the task needs: release notes,
+   product name, links, audience, tone. Leave out secrets, `.env` contents, tokens and whole files.
+   Default to drafts; sending or publishing only if the user said so.
+3. Show the user the exact prompt and say it runs on their TODO for AI credit. Wait for their OK.
+   If you change the prompt afterwards, show it again.
+4. Call `run_todo` with that prompt. Pass `project_id` or `agent_id` only if the user named one
    (`list_projects`, `list_agents`).
-4. Reply with the TODO URL and its `todo_id` / `project_id` (needed by `todoforai-check`).
-   Approvals and sign-ins happen at that URL. For scheduled work, say the schedule is
-   pending until the TODO confirms it. `run_todo` starts the TODO immediately; the TODO agent
-   sets up the schedule itself.
+5. Share the returned link and keep `todo_id` and `project_id` for later checks. Approvals and
+   sign-ins happen at that link. For scheduled work, this is the setup TODO: the schedule is
+   pending until it reports the scheduled TODO's link and time.
 
 ## Prompt template
+
 ```
-Goal: <outcome>
+Goal: <what done looks like>
 Context: <product, release notes, links, audience>
-Deliverables: <drafts / sent items / report>
-Constraints: draft only unless I approve in this TODO; <tone, language, limits>
-When: now
-  | or: do not do the work now. Create a durable schedule for <YYYY-MM-DD HH:MM timezone>
-    (or <recurrence>), then reply with the scheduled TODO's id, URL, time and timezone.
-Report back: summary of what was done, with links.
+Deliverables: <drafts, sent items or a report>
+Constraints: drafts only unless I approve in this TODO; <tone, language, limits>
+When: <one of>
+  Start now.
+  Don't do the work now. Create a second TODO scheduled for <date and time or recurrence,
+  with timezone>, then reply with its id, link and scheduled time.
+Report back: what you did, with links.
 ```
