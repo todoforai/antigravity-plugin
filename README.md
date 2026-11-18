@@ -4,6 +4,8 @@ Ship the release in Antigravity, then hand off what comes after: the launch emai
 tomorrow's signup check. Each handoff runs on [TODO for AI](https://todofor.ai), so you can close
 Antigravity and check it later at its link.
 
+![In Antigravity, a user approves a prompt based on CHANGELOG.md, then asks for the beta email draft. No email is sent.](assets/demo.gif)
+
 ## Install and sign in
 
 ```sh
@@ -15,6 +17,9 @@ create an account on todofor.ai, and approve access. Paste the code from Google'
 the CLI. You should see `signed in to api.todofor.ai`.
 
 The first time the assistant uses each TODO for AI tool, Antigravity asks you to allow it.
+
+To update, run `agy plugin uninstall todoforai`, then repeat the install command above. You stay
+signed in.
 
 ## Try it
 
